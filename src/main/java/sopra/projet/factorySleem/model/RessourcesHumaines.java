@@ -24,7 +24,6 @@ public abstract class RessourcesHumaines {
 	@Column(name="prenom")
 	private String prenom;
 	@Embedded
-	@Column(nullable=true)
 	private Adresse adresse;
 	@Embedded
 	private Coordonnees coordonnees;
