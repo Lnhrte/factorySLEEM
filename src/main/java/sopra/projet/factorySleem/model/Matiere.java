@@ -2,15 +2,33 @@ package sopra.projet.factorySleem.model;
 
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Version;
+
+@Entity
+@Table(name = "matieres")
 public class Matiere {
+	@Id
+	@GeneratedValue
 	private long id;
+	@Version
 	private int version;
 	private String titre;
 	private int duree;
 	private String objectif;
 	private String prerequis;
 	private String contenu;
+	@Enumerated(EnumType.STRING)
 	private Niveau niveau;
+	@OneToMany(mappedBy = "formateur")
+	private List<FormateurMatiere> formateurs;
+	@OneToMany(mappedBy="matiere")
 	private List<Module> modules;
 
 	public Matiere() {
