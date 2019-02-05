@@ -17,7 +17,7 @@ public class Formateur extends RessourcesHumaines {
 	private Date indisponibleDebut;
 	@Temporal(TemporalType.DATE)
 	private Date indisponibleFin;
-	@OneToMany(mappedBy = "matiere")
+	@OneToMany(mappedBy = "formateur")
 	private List<FormateurMatiere> matieres;
 
 	public Formateur() {

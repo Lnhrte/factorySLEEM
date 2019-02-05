@@ -12,8 +12,8 @@ import sopra.projet.factorySleem.model.RessourcesHumaines;
 
 public interface RessourcesHumainesRepository extends JpaRepository<RessourcesHumaines, Long> {
 
-	@Query("select type from ressourcesHumaines")
-	Optional<RessourcesHumaines> findByType(@Param("type") String type);
+//	@Query("select s from ressources_humaines")
+//	Optional<RessourcesHumaines> findByType(@Param("type") String type);
 //
 //	@Query("select adresse from ressourcesHumaines")
 //	Optional<RessourcesHumaines> findByAdresses(@Param("adresse") Adresse adresse);

@@ -9,7 +9,7 @@ import javax.persistence.Table;
 import javax.persistence.Version;
 
 @Entity
-@Table(name="formateursMatieres")
+@Table(name="formateurs_matieres")
 public class FormateurMatiere {
 	@Id
 	@GeneratedValue

@@ -26,7 +26,7 @@ public class Matiere {
 	private String contenu;
 	@Enumerated(EnumType.STRING)
 	private Niveau niveau;
-	@OneToMany(mappedBy = "formateur")
+	@OneToMany(mappedBy = "matiere")
 	private List<FormateurMatiere> formateurs;
 	@OneToMany(mappedBy="matiere")
 	private List<Module> modules;
@@ -44,11 +44,11 @@ public class Matiere {
 		this.niveau = niveau;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

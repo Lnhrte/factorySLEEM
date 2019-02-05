@@ -14,11 +14,11 @@ public interface RessourcesMateriellesRepository extends JpaRepository<Ressource
 //	@Query("select ordinateur from RessourcesMaterielles")
 //	List<Ordinateur>findAllOrdinateur();
 	
-	List<RessourcesMaterielles>findAll();
-	List<Ordinateur>findAllOrdinateur();
-	List<VideoProjecteur>findAllVideoProjecteur();
-	List<Salle>findAllSalle();
-	
+//	List<RessourcesMaterielles>findAll();
+//	List<Ordinateur>findAllOrdinateur();
+//	List<VideoProjecteur>findAllVideoProjecteur();
+//	List<Salle>findAllSalle();
+//	
 	
 	
 	

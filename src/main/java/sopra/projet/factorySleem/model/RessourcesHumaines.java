@@ -1,5 +1,6 @@
 package sopra.projet.factorySleem.model;
 
+import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -11,14 +12,16 @@ import javax.persistence.Table;
 import javax.persistence.Version;
 
 @Entity
-@Table(name = "ressourcesHumaines")
+@Table(name = "ressources_humaines")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "type")
 public abstract class RessourcesHumaines {
 	@Id
 	@GeneratedValue
 	private Long id;
+	@Column(name="nom")
 	private String nom;
+	@Column(name="prenom")
 	private String prenom;
 	@Embedded
 	private Adresse adresse;

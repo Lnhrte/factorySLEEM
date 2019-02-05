@@ -10,10 +10,10 @@ import org.springframework.data.repository.query.Param;
 import sopra.projet.factorySleem.model.Salle;
 
 public interface SalleRepository extends JpaRepository<Salle, Integer> {
-	List<Salle> findByNomLike(String nom);
+//	List<Salle> findByNomLike(String nom);
 
-	@Query("select s from Salle s left join fetch s.personnes where s.numero=:numero")
-	Optional<Salle> findByIdWithPersonnes(@Param("numero") Integer id);
+//	@Query("select s from Salle s left join fetch s.personnes where s.numero=:numero")
+//	Optional<Salle> findByIdWithPersonnes(@Param("numero") Integer id);
 
-	List<Salle> findAllWithPersonnes();
+//	List<Salle> findAllWithPersonnes();
 }
