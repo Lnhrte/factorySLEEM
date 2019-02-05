@@ -1,4 +1,4 @@
-package sopra.formation.formationSpringBoot;
+package sopra.projet.factrorySleem.SpringBoot;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class FormationSpringBootApplicationTests {
+public class FormationSpringBootApplicationTestsSekouly {
 
 	@Test
 	public void contextLoads() {
