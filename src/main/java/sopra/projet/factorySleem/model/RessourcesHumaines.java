@@ -11,13 +11,13 @@ import javax.persistence.Table;
 import javax.persistence.Version;
 
 @Entity
-@Table (name="ressourcesHumaines")
+@Table(name = "ressourcesHumaines")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "type")
 public abstract class RessourcesHumaines {
 	@Id
 	@GeneratedValue
-	private long id;
+	private Long id;
 	private String nom;
 	private String prenom;
 	@Embedded
@@ -30,25 +30,13 @@ public abstract class RessourcesHumaines {
 	public RessourcesHumaines() {
 		super();
 	}
-	
 
-<<<<<<< HEAD
 	public RessourcesHumaines(String nom, String prenom) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
 	}
 
-
-=======
->>>>>>> master
-	public RessourcesHumaines(String nom, String prenom, Adresse adresse, Coordonnees coordonnees) {
-		super();
-		this.nom = nom;
-		this.prenom = prenom;
-		this.adresse = adresse;
-		this.coordonnees = coordonnees;
-	}
 
 	public long getId() {
 		return id;
