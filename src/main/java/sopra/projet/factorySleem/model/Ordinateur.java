@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -20,6 +21,8 @@ public class Ordinateur extends RessourcesMaterielles {
 	@Column(name = "anneeAchat")
 	@Temporal(TemporalType.DATE)
 	private Date anneeAchat;
+	@OneToOne(mappedBy = "ordinateur")
+	Stagiaire stagiaire;
 
 	public Ordinateur() {
 		super();
@@ -63,6 +66,14 @@ public class Ordinateur extends RessourcesMaterielles {
 
 	public void setAnneeAchat(Date anneeAchat) {
 		this.anneeAchat = anneeAchat;
+	}
+
+	public Stagiaire getStagiaire() {
+		return stagiaire;
+	}
+
+	public void setStagiaire(Stagiaire stagiaire) {
+		this.stagiaire = stagiaire;
 	}
 
 	@Override
