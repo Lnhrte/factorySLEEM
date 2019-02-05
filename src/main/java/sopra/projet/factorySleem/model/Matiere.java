@@ -16,7 +16,7 @@ import javax.persistence.Version;
 public class Matiere {
 	@Id
 	@GeneratedValue
-	private long id;
+	private Long id;
 	@Version
 	private int version;
 	private String titre;
@@ -34,8 +34,7 @@ public class Matiere {
 	public Matiere() {
 	}
 
-	public Matiere(String titre, int duree, String objectif, String prerequis, String contenu, Niveau niveau,
-			List<Module> modules) {
+	public Matiere(String titre, int duree, String objectif, String prerequis, String contenu, Niveau niveau) {
 		super();
 		this.titre = titre;
 		this.duree = duree;
@@ -43,7 +42,6 @@ public class Matiere {
 		this.prerequis = prerequis;
 		this.contenu = contenu;
 		this.niveau = niveau;
-		this.modules = modules;
 	}
 
 	public long getId() {

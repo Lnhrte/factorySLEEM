@@ -1,7 +1,9 @@
 package sopra.projet.factorySleem.model;
 
 import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
 
+@Entity
 @DiscriminatorValue("videoProjecteur")
 public class VideoProjecteur extends RessourcesMaterielles {
 

@@ -37,6 +37,13 @@ public abstract class RessourcesHumaines {
 		this.prenom = prenom;
 	}
 
+	public RessourcesHumaines(String nom, String prenom, Adresse adresse, Coordonnees coordonnees) {
+		super();
+		this.nom = nom;
+		this.prenom = prenom;
+		this.adresse = adresse;
+		this.coordonnees = coordonnees;
+	}
 
 	public long getId() {
 		return id;
