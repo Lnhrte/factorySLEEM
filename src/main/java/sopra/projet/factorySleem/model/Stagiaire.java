@@ -36,8 +36,8 @@ public class Stagiaire extends RessourcesHumaines {
 		super();
 	}
 
-	public Stagiaire(Ordinateur ordinateur) {
-		super();
+	public Stagiaire(String nom, String prenom, Ordinateur ordinateur) {
+		super(nom, prenom);
 		this.ordinateur = ordinateur;
 	}
 

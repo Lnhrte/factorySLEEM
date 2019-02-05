@@ -32,9 +32,11 @@ public class Gestionnaire extends RessourcesHumaines {
 	}
 
 	public Gestionnaire() {
+		super();
 	}
 
-	public Gestionnaire(String motDePasse) {
+	public Gestionnaire(String nom, String prenom, String motDePasse) {
+		super(nom, prenom);
 		this.motDePasse = motDePasse;
 	}
 
