@@ -7,9 +7,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.Table;
 import javax.persistence.Version;
 
 @Entity
+@Table (name="ressourcesHumaines")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "type")
 public abstract class RessourcesHumaines {
@@ -29,15 +31,13 @@ public abstract class RessourcesHumaines {
 		super();
 	}
 
-	public RessourcesHumaines(long id, String nom, String prenom, Adresse adresse, Coordonnees coordonnees,
-			int version) {
+	public RessourcesHumaines(long id, String nom, String prenom, Adresse adresse, Coordonnees coordonnees) {
 		super();
 		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.adresse = adresse;
 		this.coordonnees = coordonnees;
-		this.version = version;
 	}
 
 	public long getId() {
