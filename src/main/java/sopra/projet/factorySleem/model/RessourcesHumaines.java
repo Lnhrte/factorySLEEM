@@ -31,9 +31,8 @@ public abstract class RessourcesHumaines {
 		super();
 	}
 
-	public RessourcesHumaines(long id, String nom, String prenom, Adresse adresse, Coordonnees coordonnees) {
+	public RessourcesHumaines(String nom, String prenom, Adresse adresse, Coordonnees coordonnees) {
 		super();
-		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.adresse = adresse;
