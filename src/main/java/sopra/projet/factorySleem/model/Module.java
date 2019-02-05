@@ -42,19 +42,19 @@ public class Module {
 		super();
 	}
 
-	public Module(Salle salle, VideoProjecteur videoprojecteur, Matiere matiere, Formation formation) {
+	public Module(Date dateDebut, Date dateFin, Salle salle, VideoProjecteur videoprojecteur) {
 		super();
+		this.dateDebut = dateDebut;
+		this.dateFin = dateFin;
 		this.salle = salle;
 		this.videoprojecteur = videoprojecteur;
-		this.matiere = matiere;
-		this.formation = formation;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
