@@ -4,32 +4,32 @@ package sopra.projet.factorySleem.model;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Version;
 
 @Entity
 @DiscriminatorValue("stagiaire")
 public class Stagiaire extends RessourcesHumaines {
-	@Id
-	@GeneratedValue
-	private long id;
-	@Version
-	private int version;
 	@Column(name = "ordinateur")
 	private Ordinateur ordinateur;
 	@ManyToOne
 	@JoinColumn(name = "formation_Id")
 	private Formation formation;
-
+	
 	public Ordinateur getOrdinateur() {
 		return ordinateur;
 	}
 
 	public void setOrdinateur(Ordinateur ordinateur) {
 		this.ordinateur = ordinateur;
+	}
+	
+	public Formation getFormation() {
+		return formation;
+	}
+
+	public void setFormation(Formation formation) {
+		this.formation = formation;
 	}
 
 	public Stagiaire() {
@@ -43,8 +43,8 @@ public class Stagiaire extends RessourcesHumaines {
 
 	@Override
 	public String toString() {
-		return "Stagiaire [id=" + id + ", version=" + version + ", ordinateur=" + ordinateur + ", formation="
-				+ formation + "]";
+		return "Stagiaire [ordinateur=" + ordinateur + ", formation=" + formation + "]";
 	}
+
 
 }

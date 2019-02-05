@@ -21,69 +21,70 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import com.fasterxml.jackson.annotation.JsonView;
+//import com.fasterxml.jackson.annotation.JsonView;
 
-import sopra.projet.factorySleem.model.Stagiaire;
-import sopra.projet.factorySleem.repository.StagiaireRepository;
+import sopra.projet.factorySleem.model.Formation;
+import sopra.projet.factorySleem.repository.FormationRepository;
 
 @RestController
-@RequestMapping("/rest/ressourcesHumaines/stagiaire")
+@RequestMapping("/rest/formation")
 @CrossOrigin(origins= {"*"})
-public class StagiaireRestController {
+public class FormationRestController {
 	
 	@Autowired
-	StagiaireRepository stagiaireRepository;
+	FormationRepository formationRepository;
 
 	@GetMapping(path = { "", "/" })
-	@JsonView(JsonViews.Common.class)
-	public ResponseEntity<List<Stagiaire>> findAll() {
-		return new ResponseEntity<>(stagiaireRepository.findAllStagiaire(), HttpStatus.OK);
+//	@JsonView(JsonViews.Common.class)
+	public ResponseEntity<List<Formation>> findAll() {
+		return new ResponseEntity<>(formationRepository.findAllFormation(), HttpStatus.OK);
 	}
 
 	@PostMapping(path = { "", "/" })
-	public ResponseEntity<Void> createStagiaire(@Valid @RequestBody Stagiaire stagiaire, BindingResult br,
+	public ResponseEntity<Void> createFormation(@Valid @RequestBody Formation formation, BindingResult br,
 			UriComponentsBuilder uCB) {
 		ResponseEntity<Void> response = null;
 		if (br.hasErrors()) {
 			response = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		} else {
-			stagiaireRepository.save(stagiaire);
+			formationRepository.save(formation);
 			HttpHeaders header = new HttpHeaders();
-			header.setLocation(uCB.path("/rest/stagiaire/{id}").buildAndExpand(stagiaire.getId()).toUri());
+			header.setLocation(uCB.path("/rest/formation/{id}").buildAndExpand(formation.getId()).toUri());
 			response = new ResponseEntity<>(header, HttpStatus.CREATED);
 		}
 		return response;
 	}
 
 	@GetMapping(value = "/{id}")
-	@JsonView(JsonViews.Common.class)
-	public ResponseEntity<Stagiaire> findById(@PathVariable(name = "id") Integer id) {
-		Optional<RessourcesHumaines> opt = stagiaireRepository.findById(id);
-		ResponseEntity<Stagiaire> response = null;
+//	@JsonView(JsonViews.Common.class)
+	public ResponseEntity<Formation> findById(@PathVariable(name = "id") Long id) {
+		Optional<Formation> opt = formationRepository.findById(id);
+		ResponseEntity<Formation> response = null;
 		if (opt.isPresent()) {
-			response = new ResponseEntity<Stagiaire>((Stagiaire)opt.get(), HttpStatus.OK);
+			response = new ResponseEntity<Formation>((Formation)opt.get(), HttpStatus.OK);
 		} else {
 			response = new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		}
 		return response;
 	}
 
-	@JsonView(JsonViews.Common.class)
+//	@JsonView(JsonViews.Common.class)
 	@PutMapping(path = { "", "/" })
-	public ResponseEntity<Stagiaire> update(@Valid @RequestBody Stagiaire stagiaire, BindingResult br) {
-		ResponseEntity<Stagiaire> response = null;
+	public ResponseEntity<Formation> update(@Valid @RequestBody Formation formation, BindingResult br) {
+		ResponseEntity<Formation> response = null;
 
-		if (br.hasErrors() || stagiaire.getId() == null) {
+		if (br.hasErrors() || formation.getId() == null) {
 			response = new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
 		} else {
-			Optional<RessourcesHumaines> opt = stagiaireRepository.findById(stagiaire.getId());
+			Optional<Formation> opt = formationRepository.findById(formation.getId());
 			if (opt.isPresent()) {
-				Stagiaire stagiaireEnBase = (Stagiaire)opt.get();
-				stagiaireEnBase.setPrenom(stagiaire.getPrenom());
-				stagiaireEnBase.setNom(stagiaire.getNom());
-				stagiaireEnBase.setAdresse(stagiaire.getAdresse());
-				stagiaireRepository.save(stagiaireEnBase);
-				response = new ResponseEntity<Stagiaire>(stagiaireEnBase, HttpStatus.OK);
+				Formation formationEnBase = (Formation)opt.get();
+				formationEnBase.setVersion(formation.getVersion());
+				formationEnBase.setDateDebut(formation.getDateDebut());
+				formationEnBase.setDateFin(formation.getDateFin());
+				formationEnBase.setGestionnaire(formation.getGestionnaire());
+				formationRepository.save(formationEnBase);
+				response = new ResponseEntity<Formation>(formationEnBase, HttpStatus.OK);
 			} else {
 				response = new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
 			}
@@ -92,11 +93,11 @@ public class StagiaireRestController {
 	}
 
 	@DeleteMapping(value = "/{id}")
-	public ResponseEntity<Void> delete(@PathVariable(name = "id") Integer id) {
-		Optional<RessourcesHumaines> opt = stagiaireRepository.findById(id);
+	public ResponseEntity<Void> delete(@PathVariable(name = "id") Long id) {
+		Optional<Formation> opt = formationRepository.findById(id);
 		ResponseEntity<Void> response = null;
 		if (opt.isPresent()) {
-			stagiaireRepository.deleteById(id);
+			formationRepository.deleteById(id);
 			response = new ResponseEntity<>(HttpStatus.OK);
 		} else {
 			response = new ResponseEntity<>(HttpStatus.NO_CONTENT);

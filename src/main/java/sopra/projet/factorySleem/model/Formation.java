@@ -14,11 +14,11 @@ import javax.persistence.Table;
 import javax.persistence.Version;
 
 @Entity
-@Table(name="formations")
+@Table(name = "formations")
 public class Formation {
 	@Id
 	@GeneratedValue
-	private long id;
+	private Long id;
 	@Version
 	private int version;
 	@Column(name = "dateDebut")
@@ -33,12 +33,36 @@ public class Formation {
 	@OneToMany(mappedBy = "formation")
 	private List<Module> Modules;
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public int getVersion() {
+		return version;
+	}
+
+	public Date getDateDebut() {
+		return dateDebut;
+	}
+
+	public void setDateDebut(Date dateDebut) {
+		this.dateDebut = dateDebut;
+	}
+
+	public Date getDateFin() {
+		return dateFin;
+	}
+
+	public void setDateFin(Date dateFin) {
+		this.dateFin = dateFin;
+	}
+
+	public void setVersion(int version) {
+		this.version = version;
 	}
 
 	public Gestionnaire getGestionnaire() {
@@ -55,6 +79,14 @@ public class Formation {
 
 	public void setStagiaires(List<Stagiaire> stagiaires) {
 		this.stagiaires = stagiaires;
+	}
+
+	public List<Module> getModules() {
+		return Modules;
+	}
+
+	public void setModules(List<Module> modules) {
+		Modules = modules;
 	}
 
 	public Formation() {

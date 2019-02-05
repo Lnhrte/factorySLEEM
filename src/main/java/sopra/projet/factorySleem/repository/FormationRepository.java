@@ -6,9 +6,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import sopra.projet.factorySleem.model.Formation;
-import sopra.projet.factorySleem.model.Stagiaire;
 
-public interface StagiaireRepository extends JpaRepository<Stagiaire, Long>{
+public interface FormationRepository extends JpaRepository<Formation, Long>{
 	@Query("select distinct f from Formation f")
-	List<Stagiaire>findAllStagiaire();
+	List<Formation>findAllFormation();
 }
