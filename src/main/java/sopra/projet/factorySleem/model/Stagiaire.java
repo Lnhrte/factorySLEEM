@@ -1,16 +1,17 @@
 
 package sopra.projet.factorySleem.model;
 
-import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 @DiscriminatorValue("stagiaire")
 public class Stagiaire extends RessourcesHumaines {
-	@Column(name = "ordinateur")
+	@OneToOne
+	@JoinColumn(name = "ordinateur_Id")
 	private Ordinateur ordinateur;
 	@ManyToOne
 	@JoinColumn(name = "formation_Id")
