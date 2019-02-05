@@ -24,6 +24,7 @@ public abstract class RessourcesHumaines {
 	@Column(name="prenom")
 	private String prenom;
 	@Embedded
+	@Column(nullable=true)
 	private Adresse adresse;
 	@Embedded
 	private Coordonnees coordonnees;
@@ -48,11 +49,11 @@ public abstract class RessourcesHumaines {
 		this.coordonnees = coordonnees;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
