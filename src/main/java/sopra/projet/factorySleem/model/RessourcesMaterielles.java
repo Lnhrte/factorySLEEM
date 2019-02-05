@@ -26,11 +26,11 @@ public abstract class RessourcesMaterielles {
 		super();
 	}
 
-	public RessourcesMaterielles(String code, int cout, int version) {
+	public RessourcesMaterielles(String code, int cout) {
 		super();
 		this.code = code;
 		this.cout = cout;
-		this.version = version;
+		
 	}
 
 	public String getCode() {
@@ -59,8 +59,10 @@ public abstract class RessourcesMaterielles {
 
 	@Override
 	public String toString() {
-		return "RessourcesMaterielles [code=" + code + ", cout=" + cout + ", version=" + version + "]";
+		return "RessourcesMaterielles [code=" + code + ", cout=" + cout + "]";
 	}
+
+	
 
 	
 }
