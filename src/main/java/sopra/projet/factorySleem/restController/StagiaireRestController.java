@@ -23,13 +23,11 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import sopra.projet.factorySleem.model.JsonViews;
-import sopra.projet.factorySleem.model.Personne;
 import sopra.projet.factorySleem.model.Stagiaire;
 import sopra.projet.factorySleem.repository.StagiaireRepository;
 
 @RestController
-@RequestMapping("/rest/personne/stagiaire")
+@RequestMapping("/rest/ressourcesHumaines/stagiaire")
 @CrossOrigin(origins= {"*"})
 public class StagiaireRestController {
 	
@@ -60,7 +58,7 @@ public class StagiaireRestController {
 	@GetMapping(value = "/{id}")
 	@JsonView(JsonViews.Common.class)
 	public ResponseEntity<Stagiaire> findById(@PathVariable(name = "id") Integer id) {
-		Optional<Personne> opt = stagiaireRepository.findById(id);
+		Optional<RessourcesHumaines> opt = stagiaireRepository.findById(id);
 		ResponseEntity<Stagiaire> response = null;
 		if (opt.isPresent()) {
 			response = new ResponseEntity<Stagiaire>((Stagiaire)opt.get(), HttpStatus.OK);
@@ -78,7 +76,7 @@ public class StagiaireRestController {
 		if (br.hasErrors() || stagiaire.getId() == null) {
 			response = new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
 		} else {
-			Optional<Personne> opt = stagiaireRepository.findById(stagiaire.getId());
+			Optional<RessourcesHumaines> opt = stagiaireRepository.findById(stagiaire.getId());
 			if (opt.isPresent()) {
 				Stagiaire stagiaireEnBase = (Stagiaire)opt.get();
 				stagiaireEnBase.setPrenom(stagiaire.getPrenom());
@@ -95,7 +93,7 @@ public class StagiaireRestController {
 
 	@DeleteMapping(value = "/{id}")
 	public ResponseEntity<Void> delete(@PathVariable(name = "id") Integer id) {
-		Optional<Personne> opt = stagiaireRepository.findById(id);
+		Optional<RessourcesHumaines> opt = stagiaireRepository.findById(id);
 		ResponseEntity<Void> response = null;
 		if (opt.isPresent()) {
 			stagiaireRepository.deleteById(id);
