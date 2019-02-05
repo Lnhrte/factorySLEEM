@@ -3,7 +3,7 @@ package sopra.projet.factorySleem.model;
 import java.io.Serializable;
 
 import javax.persistence.Embeddable;
-import javax.persistence.Version;
+
 
 @Embeddable
 public class Adresse implements Serializable {
@@ -14,8 +14,6 @@ public class Adresse implements Serializable {
 	private String codePostale;
 	private String ville;
 	private String pays;
-	@Version
-	private int version;
 
 	public Adresse() {
 		super();

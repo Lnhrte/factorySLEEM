@@ -1,15 +1,13 @@
 package sopra.projet.factorySleem.model;
 
 import javax.persistence.Embeddable;
-import javax.persistence.Version;
+
 
 @Embeddable
 public class Coordonnees {
 
 	private String telephone;
 	private String email;
-	@Version
-	private int version;
 
 	public Coordonnees() {
 		super();
