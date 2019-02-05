@@ -1,5 +1,7 @@
 package sopra.projet.factorySleem.model;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -7,6 +9,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.Version;
 
 @Entity
@@ -14,9 +18,13 @@ import javax.persistence.Version;
 public class Module {
 	@Id
 	@GeneratedValue
-	private long id;
+	private Long id;
 	@Version
 	private int version;
+	@Temporal(TemporalType.DATE)
+	private Date dateDebut;
+	@Temporal(TemporalType.DATE)
+	private Date dateFin;
 	@OneToOne
 	@JoinColumn(name = "code_salle")
 	private Salle salle;

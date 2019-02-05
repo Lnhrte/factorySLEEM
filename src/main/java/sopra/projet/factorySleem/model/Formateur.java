@@ -3,10 +3,14 @@ package sopra.projet.factorySleem.model;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+@Entity
+@DiscriminatorValue("formateur")
 public class Formateur extends RessourcesHumaines {
 	private String motDePasse;
 	@Temporal(TemporalType.DATE)
