@@ -24,12 +24,12 @@ public class Formateur extends RessourcesHumaines {
 		super();
 	}
 
-	public Formateur(String motDePasse, Date indisponibleDebut, Date indisponibleFin, List<FormateurMatiere> matieres) {
-		super();
+	public Formateur(String nom, String prenom, String motDePasse, Date indisponibleDebut, Date indisponibleFin
+			) {
+		super(nom, prenom);
 		this.motDePasse = motDePasse;
 		this.indisponibleDebut = indisponibleDebut;
 		this.indisponibleFin = indisponibleFin;
-		this.matieres = matieres;
 	}
 
 	public String getMotDePasse() {
