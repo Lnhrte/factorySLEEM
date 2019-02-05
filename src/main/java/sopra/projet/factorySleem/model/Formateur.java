@@ -3,10 +3,17 @@ package sopra.projet.factorySleem.model;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 public class Formateur extends RessourcesHumaines {
 	private String motDePasse;
+	@Temporal(TemporalType.DATE)
 	private Date indisponibleDebut;
+	@Temporal(TemporalType.DATE)
 	private Date indisponibleFin;
+	@OneToMany(mappedBy = "matiere")
 	private List<FormateurMatiere> matieres;
 
 	public Formateur() {
