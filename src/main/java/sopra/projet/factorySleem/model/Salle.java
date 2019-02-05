@@ -1,7 +1,12 @@
 package sopra.projet.factorySleem.model;
 
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
+
+@DiscriminatorValue("salle")
 public class Salle extends RessourcesMaterielles{
 
+	@Column(name = "capacite")
 	private int capacite;
 
 	
@@ -9,20 +14,28 @@ public class Salle extends RessourcesMaterielles{
 		super();
 	}
 
-	public Salle(String cout, int capacite) {
-		super(cout);
+	public Salle(String code, int cout, int capacite) {
+		super(code, cout);
 		this.capacite = capacite;
 	}
+	
+	
+	
 
 	public int getCapacite() {
 		return capacite;
 	}
 
+
+
 	public void setCapacite(int capacite) {
 		this.capacite = capacite;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return "Salle [capacite=" + capacite + "]";
+	}
 	
 	
 }
