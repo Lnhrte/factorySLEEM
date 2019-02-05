@@ -1,5 +1,18 @@
 package sopra.projet.factorySleem.model;
 
+import javax.persistence.DiscriminatorValue;
+
+@DiscriminatorValue("administrateur")
 public class Administrateur extends RessourcesHumaines{
+	
+	private String motDePasse;
+
+	public String getMotDePasse() {
+		return motDePasse;
+	}
+
+	public void setMotDePasse(String motDePasse) {
+		this.motDePasse = motDePasse;
+	}
 
 }
