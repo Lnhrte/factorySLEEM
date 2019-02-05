@@ -7,13 +7,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import sopra.projet.factorySleem.model.RessourcesMaterielles;
 import sopra.projet.factorySleem.model.Salle;
 
-public interface SalleRepository extends JpaRepository<Salle, Integer> {
-//	List<Salle> findByNomLike(String nom);
+public interface SalleRepository extends JpaRepository<RessourcesMaterielles, String> {
 
-//	@Query("select s from Salle s left join fetch s.personnes where s.numero=:numero")
-//	Optional<Salle> findByIdWithPersonnes(@Param("numero") Integer id);
-
-//	List<Salle> findAllWithPersonnes();
 }
