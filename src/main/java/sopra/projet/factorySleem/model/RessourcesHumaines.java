@@ -30,10 +30,20 @@ public abstract class RessourcesHumaines {
 	public RessourcesHumaines() {
 		super();
 	}
+	
 
-	public RessourcesHumaines(long id, String nom, String prenom, Adresse adresse, Coordonnees coordonnees) {
+<<<<<<< HEAD
+	public RessourcesHumaines(String nom, String prenom) {
 		super();
-		this.id = id;
+		this.nom = nom;
+		this.prenom = prenom;
+	}
+
+
+=======
+>>>>>>> master
+	public RessourcesHumaines(String nom, String prenom, Adresse adresse, Coordonnees coordonnees) {
+		super();
 		this.nom = nom;
 		this.prenom = prenom;
 		this.adresse = adresse;

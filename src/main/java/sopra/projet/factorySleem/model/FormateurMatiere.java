@@ -1,7 +1,26 @@
 package sopra.projet.factorySleem.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.Version;
+
+@Entity
+@Table(name="formateursMatieres")
 public class FormateurMatiere {
+	@Id
+	@GeneratedValue
+	private Long id;
+	@Version
+	private int version;
+	@ManyToOne
+	@JoinColumn(name="formateur_id")
 	private Formateur formateur;
+	@ManyToOne
+	@JoinColumn(name="matiere_id")
 	private Matiere matiere;
 
 	public FormateurMatiere() {
