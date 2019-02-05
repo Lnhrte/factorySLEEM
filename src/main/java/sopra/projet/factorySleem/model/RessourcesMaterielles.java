@@ -6,9 +6,11 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.Table;
 import javax.persistence.Version;
 
 @Entity
+@Table(name = "ressourcesMaterielles")
 @Inheritance (strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "type")
 public abstract class RessourcesMaterielles {
