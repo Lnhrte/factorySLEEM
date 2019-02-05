@@ -9,6 +9,6 @@ import sopra.projet.factorySleem.model.Formation;
 import sopra.projet.factorySleem.model.Gestionnaire;
 
 public interface GestionnaireRepository extends JpaRepository<Gestionnaire, Long>{
-	@Query("select distinct f from Formation f")
+	@Query("select distinct g from Gestionnaire g")
 	List<Gestionnaire>findAllGestionnaire();
 }

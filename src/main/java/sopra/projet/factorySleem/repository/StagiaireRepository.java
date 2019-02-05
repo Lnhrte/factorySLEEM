@@ -9,6 +9,6 @@ import sopra.projet.factorySleem.model.Formation;
 import sopra.projet.factorySleem.model.Stagiaire;
 
 public interface StagiaireRepository extends JpaRepository<Stagiaire, Long>{
-	@Query("select distinct f from Formation f")
+	@Query("select distinct s from Stagiaire s")
 	List<Stagiaire>findAllStagiaire();
 }
