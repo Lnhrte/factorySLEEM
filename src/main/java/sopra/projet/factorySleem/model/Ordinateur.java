@@ -4,9 +4,11 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+@Entity
 @DiscriminatorValue("ordinateur")
 public class Ordinateur extends RessourcesMaterielles {
 	@Column(name = "processeur")
