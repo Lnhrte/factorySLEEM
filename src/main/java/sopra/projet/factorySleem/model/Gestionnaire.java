@@ -1,5 +1,7 @@
 package sopra.projet.factorySleem.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -11,7 +13,7 @@ public class Gestionnaire extends RessourcesHumaines {
 	@Column(name = "motDePasse")
 	private String motDePasse;
 	@OneToMany(mappedBy = "gestionnaire")
-	private Formation formation;
+	private List<Formation> formations;
 	
 	public String getMotDePasse() {
 		return motDePasse;
@@ -21,12 +23,12 @@ public class Gestionnaire extends RessourcesHumaines {
 		this.motDePasse = motDePasse;
 	}
 
-	public Formation getFormation() {
-		return formation;
+	public List<Formation> getFormations() {
+		return formations;
 	}
 
-	public void setFormation(Formation formation) {
-		this.formation = formation;
+	public void setFormations(List<Formation> formations) {
+		this.formations = formations;
 	}
 
 	public Gestionnaire() {
@@ -38,7 +40,7 @@ public class Gestionnaire extends RessourcesHumaines {
 
 	@Override
 	public String toString() {
-		return "Gestionnaire [motDePasse=" + motDePasse + ", formation=" + formation + "]";
+		return "Gestionnaire [motDePasse=" + motDePasse + ", formation=" + formations + "]";
 	}
 
 }
