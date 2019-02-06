@@ -2,7 +2,6 @@ package sopra.projet.factorySleem.model;
 
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -23,10 +22,6 @@ public abstract class RessourcesHumaines {
 	private String nom;
 	@Column(name="prenom")
 	private String prenom;
-	@Embedded
-	private Adresse adresse;
-	@Embedded
-	private Coordonnees coordonnees;
 	@Version
 	private int version;
 
@@ -38,14 +33,6 @@ public abstract class RessourcesHumaines {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
-	}
-
-	public RessourcesHumaines(String nom, String prenom, Adresse adresse, Coordonnees coordonnees) {
-		super();
-		this.nom = nom;
-		this.prenom = prenom;
-		this.adresse = adresse;
-		this.coordonnees = coordonnees;
 	}
 
 	public Long getId() {
@@ -71,29 +58,7 @@ public abstract class RessourcesHumaines {
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
 	}
-
-	public Adresse getAdresse() {
-		return adresse;
-	}
-
-	public void setAdresse(Adresse adresse) {
-		this.adresse = adresse;
-	}
-
-	public Coordonnees getCoordonnees() {
-		return coordonnees;
-	}
-
-	public void setCoordonnees(Coordonnees coordonnees) {
-		this.coordonnees = coordonnees;
-	}
-
-	public int getVersion() {
-		return version;
-	}
-
-	public void setVersion(int version) {
-		this.version = version;
-	}
+	
+	
 
 }

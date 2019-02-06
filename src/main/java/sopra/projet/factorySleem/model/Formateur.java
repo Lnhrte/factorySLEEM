@@ -5,7 +5,9 @@ import java.util.List;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -20,16 +22,38 @@ public class Formateur extends RessourcesHumaines {
 	@OneToMany(mappedBy = "formateur")
 	private List<FormateurMatiere> matieres;
 
+	@OneToOne
+	@JoinColumn(name = "adresse_Id")
+	private Adresse adresse;
+	@OneToOne
+	@JoinColumn(name = "coordonnees_Id")
+	private Coordonnees coordonnees;
+
 	public Formateur() {
 		super();
 	}
 
-	public Formateur(String nom, String prenom, String motDePasse, Date indisponibleDebut, Date indisponibleFin
-			) {
+	public Formateur(String nom, String prenom, String motDePasse, Date indisponibleDebut, Date indisponibleFin) {
 		super(nom, prenom);
 		this.motDePasse = motDePasse;
 		this.indisponibleDebut = indisponibleDebut;
 		this.indisponibleFin = indisponibleFin;
+	}
+
+	public Adresse getAdresse() {
+		return adresse;
+	}
+
+	public void setAdresse(Adresse adresse) {
+		this.adresse = adresse;
+	}
+
+	public Coordonnees getCoordonnees() {
+		return coordonnees;
+	}
+
+	public void setCoordonnees(Coordonnees coordonnees) {
+		this.coordonnees = coordonnees;
 	}
 
 	public String getMotDePasse() {
