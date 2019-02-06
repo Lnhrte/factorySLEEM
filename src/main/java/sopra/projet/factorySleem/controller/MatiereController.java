@@ -43,17 +43,26 @@ public class MatiereController {
 	@GetMapping("/edit")
 	public ModelAndView edit(@RequestParam(name = "id", required = true) Long id) {
 		Optional<Matiere> matiere = matiereRepository.findById(id);
+		return goEdit(matiere.orElse(null));
+	}
+
+	@GetMapping("/add")
+	public ModelAndView addFormateur() {
+		Matiere matiere = matiereRepository.save(new Matiere());
+		return goEdit(matiere);
+	}
+
+	private ModelAndView goEdit(@Valid Matiere matiere) {
 		ModelAndView modelAndView = new ModelAndView("matiere/edit", "matiere", matiere);
 		return modelAndView;
 	}
 
-	@GetMapping("/add")
-	public ModelAndView saveFormateur(@Valid @ModelAttribute("matiere") Matiere matiere, BindingResult br) {
+	@GetMapping("/save")
+	private ModelAndView save(@Valid @ModelAttribute("matiere") Matiere matiere, BindingResult br) {
 		if (br.hasErrors()) {
-			return edit(matiere.getId());
+			return goEdit(matiere);
 		}
 		matiereRepository.save(matiere);
 		return new ModelAndView("redirect:/matiere/");
 	}
-
 }
