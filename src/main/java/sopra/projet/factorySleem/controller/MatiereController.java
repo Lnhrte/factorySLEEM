@@ -47,7 +47,7 @@ public class MatiereController {
 	}
 
 	@GetMapping("/add")
-	public ModelAndView addFormateur() {
+	public ModelAndView add() {
 		Matiere matiere = matiereRepository.save(new Matiere());
 		return goEdit(matiere);
 	}
