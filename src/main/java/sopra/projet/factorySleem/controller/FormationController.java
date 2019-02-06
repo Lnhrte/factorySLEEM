@@ -1,56 +1,48 @@
-//package sopra.projet.factorySleem.controller;
-//
-//import javax.validation.Valid;
-//
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.stereotype.Controller;
-//import org.springframework.validation.BindingResult;
-//import org.springframework.web.bind.annotation.GetMapping;
-//import org.springframework.web.bind.annotation.ModelAttribute;
-//import org.springframework.web.bind.annotation.RequestMapping;
-//import org.springframework.web.bind.annotation.RequestParam;
-//import org.springframework.web.servlet.ModelAndView;
-//
-//import sopra.formation.formationSpringBoot.dao.DaoPersonne;
-//import sopra.formation.formationSpringBoot.dao.DaoSalle;
-//import sopra.projet.factorySleem.model.Formateur;
-//import sopra.projet.factorySleem.model.Stagiaire;
-//import sopra.projet.factorySleem.repository.FormationRepository;
-//
-//
-//@Controller
-//@RequestMapping("/formation")
-//public class FormationController {
-//
-////	@Autowired
-////	private DaoFormation daoFormation;
-//	
-//	@Autowired
-//	FormationRepository formationRepository;
-//
-//	@Autowired
-//	private DaoSalle daoSalle;
-//
+package sopra.projet.factorySleem.controller;
+
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+
+import sopra.projet.factorySleem.model.Formateur;
+import sopra.projet.factorySleem.model.Stagiaire;
+import sopra.projet.factorySleem.repository.FormationRepository;
+
+
+@Controller
+@RequestMapping("/formation")
+public class FormationController {
+
+	@Autowired
+	FormationRepository formationRepository;
+
 //	@RequestMapping("")
 //	public ModelAndView home() {
-//		return new ModelAndView("redirect:/personne/");
+//		return new ModelAndView("redirect:/formation/");
 //	}
-//
-//	@GetMapping("/")
-//	public ModelAndView list() {
-//		ModelAndView modelAndView = new ModelAndView("personne/list", "personnes", daoPersonne.findAll());
-//		return modelAndView;
-//	}
-//
+
+	@GetMapping("/")
+	public ModelAndView list() {
+		ModelAndView modelAndView = new ModelAndView("formation/list", "formations", formationRepository.findAll());
+		return modelAndView;
+	}
+
 //	@GetMapping("/delete")
 //	public ModelAndView delete(@RequestParam(name = "id", required = true) Integer id) {
-//		daoPersonne.deleteByKey(id);
+//		formationRepository.deleteByKey(id);
 //		return new ModelAndView("redirect:/personne/");
 //	}
 //
 //	@GetMapping("/edit")
 //	public ModelAndView edit(@RequestParam(name = "id", required = true) Integer id) {
-//		Personne p = daoPersonne.findByKey(id);
+//		Personne p = formationRepository.findByKey(id);
 //		return goEdit(p);
 //	}
 //
@@ -97,5 +89,5 @@
 //		}
 //		return new ModelAndView("redirect:/personne/");
 //	}
-//
-//}
+
+}

@@ -24,8 +24,8 @@ public class FactorySleemSpringBootApplicationSekouly implements CommandLineRunn
 	@Override
 	public void run(String... args) throws Exception {
 
-		Gestionnaire gestionnaire = new Gestionnaire("12345");
-		gestionnaireRepository.save(gestionnaire);
+//		Gestionnaire gestionnaire = new Gestionnaire("NOM", "Prénom", "12345");
+//		gestionnaireRepository.save(gestionnaire);
 
 		// User user = userRepository.findById("olivier").get();
 		// user.setPassword(passwordEncoder.encode("olivier"));
