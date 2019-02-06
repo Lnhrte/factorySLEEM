@@ -1,19 +1,35 @@
 package sopra.projet.factorySleem.model;
 
-import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Version;
 
-import javax.persistence.Embeddable;
-
-
-@Embeddable
-public class Adresse implements Serializable {
+@Entity
+public class Adresse{
 	
-	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue
+	private Long id;
 	private int numero;
 	private String rue;
 	private String codePostale;
 	private String ville;
 	private String pays;
+	@Version
+	private int version;
+	
+	@OneToOne(mappedBy="adresse")
+	private Administrateur administrateur;
+	@OneToOne(mappedBy="adresse")
+	private Technicien technicien;
+	@OneToOne(mappedBy="adresse")
+	private Gestionnaire gestionnaire;
+	@OneToOne(mappedBy="adresse")
+	private Formateur formateur;
+	@OneToOne(mappedBy="adresse")
+	private Stagiaire stagiaire;
 
 	public Adresse() {
 		super();
@@ -71,4 +87,65 @@ public class Adresse implements Serializable {
 		this.pays = pays;
 	}
 
+
+	public Long getId() {
+		return id;
+	}
+
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+
+	public Administrateur getAdministrateur() {
+		return administrateur;
+	}
+
+
+	public void setAdministrateur(Administrateur administrateur) {
+		this.administrateur = administrateur;
+	}
+
+
+	public Technicien getTechnicien() {
+		return technicien;
+	}
+
+
+	public void setTechnicien(Technicien technicien) {
+		this.technicien = technicien;
+	}
+
+
+	public Gestionnaire getGestionnaire() {
+		return gestionnaire;
+	}
+
+
+	public void setGestionnaire(Gestionnaire gestionnaire) {
+		this.gestionnaire = gestionnaire;
+	}
+
+
+	public Formateur getFormateur() {
+		return formateur;
+	}
+
+
+	public void setFormateur(Formateur formateur) {
+		this.formateur = formateur;
+	}
+
+
+	public Stagiaire getStagiaire() {
+		return stagiaire;
+	}
+
+
+	public void setStagiaire(Stagiaire stagiaire) {
+		this.stagiaire = stagiaire;
+	}
+
+	
 }
