@@ -11,7 +11,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.Version;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "formations")
@@ -21,9 +25,11 @@ public class Formation {
 	private Long id;
 	@Version
 	private int version;
-	@Column(name = "dateDebut")
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date dateDebut;
-	@Column(name = "dateFin")
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date dateFin;
 	@ManyToOne
 	@JoinColumn(name = "gestionnaire_Id")
