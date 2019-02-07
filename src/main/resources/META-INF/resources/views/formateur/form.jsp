@@ -46,9 +46,20 @@
 						<form:input path="coordonnees.email" cssClass="form-control"
 						required="true" value="email"/>
 				</div>
+					<div class="form-group">
+					<form:label path="indisponibleDebut">Indisponnible du</form:label>
+					<form:input type="date" path="indisponibleDebut" cssClass="form-control" required="true" />
+				</div>
+				<div class="form-group">
+					<form:label path="indisponibleFin">au</form:label>
+					<form:input type="date" path="indisponibleFin" cssClass="form-control" required="true" />
+				</div>
 <!-- 				<div class="form-group"> -->
-<%-- 					<form:label path="formation">Formations</form:label> --%>
-<%-- 					<form:input path="formation" cssClass="form-control" required="true" /> --%>
+					<form:label path="matieres">Matieres</form:label>
+					<form:select path="matieres" cssClass="form-control" required="true">
+					<ul>${matiere.id}</ul>
+					</form:select>
+<%-- 					<form:input path="matieres" cssClass="form-control" required="true" /> --%>
 <!-- 				</div> -->
 				<div>
 					<button class="btn btn-success" type="submit">Enregistrer</button>
