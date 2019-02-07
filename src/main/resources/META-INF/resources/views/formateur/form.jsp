@@ -55,10 +55,10 @@
 					<form:input type="date" path="indisponibleFin" cssClass="form-control" required="true" />
 				</div>
 <!-- 				<div class="form-group"> -->
-					<form:label path="matieres">Matieres</form:label>
-					<form:select path="matieres" cssClass="form-control" required="true">
-					<ul>${matiere.id}</ul>
-					</form:select>
+<%-- 					<form:label path="matieres">Matieres</form:label> --%>
+<%-- 					<form:select path="matieres" cssClass="form-control" required="true"> --%>
+<%-- 					<ul>${matiere.id}</ul> --%>
+<%-- 					</form:select> --%>
 <%-- 					<form:input path="matieres" cssClass="form-control" required="true" /> --%>
 <!-- 				</div> -->
 				<div>
