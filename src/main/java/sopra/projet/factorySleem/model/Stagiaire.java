@@ -17,28 +17,7 @@ public class Stagiaire extends RessourcesHumaines {
 	@JoinColumn(name = "formation_Id")
 	private Formation formation;
 
-	@OneToOne
-	@JoinColumn(name = "adresse_Id")
-	private Adresse adresse;
-	@OneToOne
-	@JoinColumn(name = "coordonnees_Id")
-	private Coordonnees coordonnees;
 
-	public Adresse getAdresse() {
-		return adresse;
-	}
-
-	public void setAdresse(Adresse adresse) {
-		this.adresse = adresse;
-	}
-
-	public Coordonnees getCoordonnees() {
-		return coordonnees;
-	}
-
-	public void setCoordonnees(Coordonnees coordonnees) {
-		this.coordonnees = coordonnees;
-	}
 
 	public Ordinateur getOrdinateur() {
 		return ordinateur;
