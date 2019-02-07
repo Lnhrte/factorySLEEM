@@ -1,7 +1,10 @@
 package sopra.projet.factorySleem.model;
 
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -18,12 +21,23 @@ public abstract class RessourcesHumaines {
 	@Id
 	@GeneratedValue
 	private Long id;
-	@Column(name="nom")
+	@Column(name = "nom")
 	private String nom;
-	@Column(name="prenom")
+	@Column(name = "prenom")
 	private String prenom;
 	@Version
 	private int version;
+	@Embedded
+	@AttributeOverrides({ @AttributeOverride(name = "numero", column = @Column(name = "numero")),
+			@AttributeOverride(name = "rue", column = @Column(name = "rue", length = 200)),
+			@AttributeOverride(name = "codePostal", column = @Column(name = "code_postal", length = 20)),
+			@AttributeOverride(name = "ville", column = @Column(name = "ville", length = 150)),
+			@AttributeOverride(name = "pays", column = @Column(name = "pays", length = 150)) })
+	private Adresse adresse;
+	@Embedded
+	@AttributeOverrides({ @AttributeOverride(name = "telephone", column = @Column(name = "telephone")),
+		@AttributeOverride(name = "email", column = @Column(name = "email", length = 200)) })
+	private Coordonnees coordonnees;
 
 	public RessourcesHumaines() {
 		super();
@@ -58,7 +72,29 @@ public abstract class RessourcesHumaines {
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
 	}
-	
-	
+
+	public int getVersion() {
+		return version;
+	}
+
+	public void setVersion(int version) {
+		this.version = version;
+	}
+
+	public Adresse getAdresse() {
+		return adresse;
+	}
+
+	public void setAdresse(Adresse adresse) {
+		this.adresse = adresse;
+	}
+
+	public Coordonnees getCoordonnees() {
+		return coordonnees;
+	}
+
+	public void setCoordonnees(Coordonnees coordonnees) {
+		this.coordonnees = coordonnees;
+	}
 
 }
