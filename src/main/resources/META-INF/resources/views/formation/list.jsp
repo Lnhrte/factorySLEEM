@@ -29,6 +29,7 @@
 			<th>Date de fin</th>
 			<th></th>
 			<th></th>
+			<th></th>
 
 		</tr>
 		<c:forEach var="formation" items="${formations}">
@@ -39,6 +40,7 @@
 				
 				<td><a class="btn btn-danger" href="./delete?id=${formation.id}">Supprimer</a></td>
 				<td><a class="btn btn-info" href="./edit?id=${formation.id}">Editer</a></td>
+				<td><a class="btn btn-success" href="./planning?id=${formation.id}">Voir Planning</a></td>
 			</tr>
 		</c:forEach>
 	</table>

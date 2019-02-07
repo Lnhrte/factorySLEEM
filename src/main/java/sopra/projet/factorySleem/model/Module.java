@@ -3,6 +3,7 @@ package sopra.projet.factorySleem.model;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -34,7 +35,7 @@ public class Module {
 	@ManyToOne
 	@JoinColumn(name = "matiere_id")
 	private Matiere matiere;
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "formation_id")
 	private Formation formation;
 
@@ -98,10 +99,25 @@ public class Module {
 		this.formation = formation;
 	}
 
+	public Date getDateDebut() {
+		return dateDebut;
+	}
+
+	public void setDateDebut(Date dateDebut) {
+		this.dateDebut = dateDebut;
+	}
+
+	public Date getDateFin() {
+		return dateFin;
+	}
+
+	public void setDateFin(Date dateFin) {
+		this.dateFin = dateFin;
+	}
+
 	@Override
 	public String toString() {
-		return "Module [id=" + id + ", version=" + version + ", salle=" + salle + ", videoprojecteur=" + videoprojecteur
-				+ ", matiere=" + matiere + ", formation=" + formation + "]";
+		return matiere.toString();
 	}
 
 }
