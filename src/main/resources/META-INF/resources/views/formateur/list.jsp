@@ -70,12 +70,12 @@
 	<table class="table">
 		<tr>
 			<th>Id</th>
-			<!-- 			<th>Type</th> -->
 			<th>Nom</th>
 			<th>Prenom</th>
 			<th colspan="5" style="text-align: center">Adresse</th>
-			<thcolspan="2" style="text-align: center">Coordonnees</th>
-			<!-- 			<th>Formations</th> -->
+			<th colspan="2" style="text-align: center">Coordonnees</th>
+			<th colspan="2" style="text-align: center">Indisponible</th>
+			<th>Matieres</th>
 			<th></th>
 			<th></th>
 		</tr>
@@ -88,12 +88,13 @@
 			<td>pays</td>
 			<td>telephone</td>
 			<td>email</td>
+			<td>Du</td>
+			<td>Au</td>
 
 		</tr>
 		<c:forEach var="formateur" items="${formateur}">
 			<tr>
 				<td>${formateur.id}</td>
-				<%-- 				<td>${formateur.type}</td> --%>
 				<td>${formateur.nom}</td>
 				<td>${formateur.prenom}</td>
 				<td>${formateur.adresse.numero}</td>
@@ -101,9 +102,14 @@
 				<td>${formateur.adresse.codePostal}</td>
 				<td>${formateur.adresse.ville}</td>
 				<td>${formateur.adresse.pays}</td>
-				<td>${formateu.coordonnees.telephone}</td>
+				<td>${formateur.coordonnees.telephone}</td>
 				<td>${formateur.coordonnees.email}</td>
-				<%-- 				<td>${formateur.formation}</td> --%>
+				<td><fmt:formatDate value="${formateur.indisponibleDebut}"
+						pattern="dd/MM/yyyy" /></td>
+				<td><fmt:formatDate value="${formateur.indisponibleFin}"
+						pattern="dd/MM/yyyy" /></td>
+<!-- 				<td><a class="btn btn-success" href="./matiere/list">Voir Matieres</a></td> -->
+				<td><a class="btn btn-success" href="./matiere?id=${formateur.id}">Voir Matieres</a></td>
 				<td><a class="btn btn-danger"
 					href="./delete?id=${formateur.id}">Supprimer</a></td>
 				<td><a class="btn btn-info" href="./edit?id=${formateur.id}">Editer</a></td>

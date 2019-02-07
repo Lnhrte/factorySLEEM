@@ -5,19 +5,24 @@ import java.util.List;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @DiscriminatorValue("formateur")
 public class Formateur extends RessourcesHumaines {
 	private String motDePasse;
 	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date indisponibleDebut;
 	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date indisponibleFin;
-	@OneToMany(mappedBy = "formateur")
+	@OneToMany(mappedBy = "formateur", fetch= FetchType.LAZY)
 	private List<FormateurMatiere> matieres;
 
 	public Formateur() {
