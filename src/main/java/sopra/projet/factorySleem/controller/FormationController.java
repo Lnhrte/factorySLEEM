@@ -17,9 +17,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import sopra.projet.factorySleem.model.Formateur;
 import sopra.projet.factorySleem.model.Formation;
+import sopra.projet.factorySleem.model.Matiere;
 import sopra.projet.factorySleem.model.Module;
+import sopra.projet.factorySleem.model.RessourcesHumaines;
+import sopra.projet.factorySleem.repository.FormateurRepository;
 import sopra.projet.factorySleem.repository.FormationRepository;
+import sopra.projet.factorySleem.repository.MatiereRepository;
 import sopra.projet.factorySleem.repository.ModuleRepository;
 
 @Controller
@@ -31,6 +36,12 @@ public class FormationController {
 
 	@Autowired
 	ModuleRepository moduleRepository;
+	
+	@Autowired
+	MatiereRepository matiereRepository;
+	
+//	@Autowired
+//	FormateurRepository formateurRepository;
 
 	@RequestMapping("")
 	public ModelAndView home() {
@@ -63,6 +74,10 @@ public class FormationController {
 
 	private ModelAndView goEdit(@Valid Formation formation) {
 		ModelAndView modelAndView = new ModelAndView("formation/edit", "formation", formation);
+		ArrayList<Matiere> matieres = (ArrayList<Matiere>) matiereRepository.findAll();
+//		List<RessourcesHumaines> formateurs =  formateurRepository.findAll();
+		modelAndView.addObject("matieres", matieres);
+//		modelAndView.addObject("formateurs",formateurs );
 		return modelAndView;
 	}
 
