@@ -15,90 +15,46 @@
 <title>Planning de la formation</title>
 </head>
 <body>
-	<div align="center">
-		<h2>Planning duree${dureeFormation } module 1 ${modules[0]}</h2>
-	</div>
+	<h2 align="center">Planning ${dureesModules.get(0)}</h2>
 	<table class="table">
 		<tr>
 			<th style="vertical-align: middle; text-align: center;">Mois</th>
-			<th colspan="2" style="vertical-align: middle; text-align: center;">Date</th>
+			<th style="vertical-align: middle; text-align: center;">Date</th>
 			<th style="vertical-align: middle; text-align: center;">Module</th>
 			<th style="vertical-align: middle; text-align: center;">Formateurs</th>
 			<th style="vertical-align: middle; text-align: center;">Titre</th>
 
 		</tr>
 		<tr>
-			<td rowspan="14" style="vertical-align: middle; text-align: center;">Janvier</td>
-			<td>jeu</td>
-			<td>18</td>
-			<td rowspan="2" bgcolor="yellow"
-				style="vertical-align: middle; text-align: center;">UML</td>
-			<td rowspan="14" style="vertical-align: middle; text-align: center;">UML</td>
-			<td rowspan="14" style="vertical-align: middle; text-align: center;">Formateur
+			<td rowspan="${dureeFormation}"
+				style="vertical-align: middle; text-align: center;"><c:if
+					test="${formation.dateDebut.getMonth()==0}">Janvier</c:if> <c:if
+					test="${formation.dateDebut.getMonth()==1}">Février</c:if> <c:if
+					test="${formation.dateDebut.getMonth()==2}">Mars</c:if> <c:if
+					test="${formation.dateDebut.getMonth()==3}">Avril</c:if> <c:if
+					test="${formation.dateDebut.getMonth()==4}">Mai</c:if> <c:if
+					test="${formation.dateDebut.getMonth()==5}">Juin</c:if> <c:if
+					test="${formation.dateDebut.getMonth()==6}">Juillet</c:if> <c:if
+					test="${formation.dateDebut.getMonth()==7}">Août</c:if> <c:if
+					test="${formation.dateDebut.getMonth()==8}">Septembre</c:if> <c:if
+					test="${formation.dateDebut.getMonth()==9}">Octobre</c:if> <c:if
+					test="${formation.dateDebut.getMonth()==10}">Novembre</c:if> <c:if
+					test="${formation.dateDebut.getMonth()==11}">Décembre</c:if></td>
+
+		</tr>
+		<c:forEach var="i" begin="0" end="${dureeFormation}" step="1">
+			<tr>
+				<td style="vertical-align: middle; text-align: center;">${formation.dateDebut.getDay()+i}</td>
+			</tr>
+		</c:forEach>
+		<tr>
+			<td rowspan="${dureesModules.get(0)}" bgcolor="yellow"
+				style="vertical-align: middle; text-align: center;">${modules.get(0)}</td>
+			<td rowspan="${dureesModules.get(0)}"
+				style="vertical-align: middle; text-align: center;">Olivier</td>
+			<td rowspan="${dureesModules.get(0)}"
+				style="vertical-align: middle; text-align: center;">Formateur
 				JEE</td>
-		</tr>
-		<tr>
-			<td>ven</td>
-			<td>19</td>
-		</tr>
-		<tr>
-			<td bgcolor="grey">sam</td>
-			<td bgcolor="grey">20</td>
-			<td bgcolor="grey"></td>
-		</tr>
-		<tr>
-			<td bgcolor="grey">dim</td>
-			<td bgcolor="grey">21</td>
-			<td bgcolor="grey"></td>
-		</tr>
-		<tr>
-			<td>lun</td>
-			<td>22</td>
-			<td rowspan="2" bgcolor="green"
-				style="vertical-align: middle; text-align: center;">Algo Objet</td>
-		</tr>
-		<tr>
-			<td>mar</td>
-			<td>23</td>
-		</tr>
-		<tr>
-			<td>mer</td>
-			<td>24</td>
-			<td rowspan="3" bgcolor="DodgerBlue"
-				style="vertical-align: middle; text-align: center;">Init Prog
-				Java</td>
-		</tr>
-		<tr>
-			<td>jeu</td>
-			<td>25</td>
-		</tr>
-		<tr>
-			<td>ven</td>
-			<td>26</td>
-		</tr>
-		<tr>
-			<td bgcolor="grey">sam</td>
-			<td bgcolor="grey">27</td>
-			<td bgcolor="grey"></td>
-		</tr>
-		<tr>
-			<td bgcolor="grey">dim</td>
-			<td bgcolor="grey">28</td>
-			<td bgcolor="grey"></td>
-		</tr>
-		<tr>
-			<td>lun</td>
-			<td>29</td>
-			<td rowspan="3" bgcolor="blue"
-				style="vertical-align: middle; text-align: center;">BDD SQL</td>
-		</tr>
-		<tr>
-			<td>mar</td>
-			<td>30</td>
-		</tr>
-		<tr>
-			<td>mer</td>
-			<td>31</td>
 		</tr>
 
 

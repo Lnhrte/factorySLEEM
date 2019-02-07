@@ -28,7 +28,7 @@ public class Matiere {
 	private Niveau niveau;
 	@OneToMany(mappedBy = "matiere")
 	private List<FormateurMatiere> formateurs;
-	@OneToMany(mappedBy="matiere")
+	@OneToMany(mappedBy = "matiere")
 	private List<Module> modules;
 
 	public Matiere() {
@@ -118,9 +118,7 @@ public class Matiere {
 
 	@Override
 	public String toString() {
-		return "Matiere [id=" + id + ", version=" + version + ", titre=" + titre + ", duree=" + duree + ", objectif="
-				+ objectif + ", prerequis=" + prerequis + ", contenu=" + contenu + ", niveau=" + niveau + ", modules="
-				+ modules + "]";
+		return titre;
 	}
 
 }
