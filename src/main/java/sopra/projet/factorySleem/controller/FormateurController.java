@@ -1,6 +1,8 @@
 package sopra.projet.factorySleem.controller;
 
+import java.util.ArrayList;
 import java.util.Optional;
+import java.util.concurrent.TimeUnit;
 
 import javax.validation.Valid;
 
@@ -14,8 +16,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import sopra.projet.factorySleem.model.Formateur;
+import sopra.projet.factorySleem.model.FormateurMatiere;
+import sopra.projet.factorySleem.model.Matiere;
+import sopra.projet.factorySleem.model.Module;
 import sopra.projet.factorySleem.model.RessourcesHumaines;
+import sopra.projet.factorySleem.repository.FormateurMatiereRepository;
 import sopra.projet.factorySleem.repository.FormateurRepository;
+import sopra.projet.factorySleem.repository.MatiereRepository;
 import sopra.projet.factorySleem.repository.RessourcesHumainesRepository;
 
 @Controller
@@ -26,6 +33,10 @@ public class FormateurController {
 	FormateurRepository formateurRepository;
 	@Autowired
 	RessourcesHumainesRepository ressourcesHumainesRepository;
+	@Autowired
+	MatiereRepository matiereRepository;
+	@Autowired
+	FormateurMatiereRepository formateurmatiereRepository;
 
 	@RequestMapping("")
 	public ModelAndView home() {
@@ -70,6 +81,41 @@ public class FormateurController {
 			}
 			formateurRepository.save(formateur);
 			System.out.println("apres"+formateur);
+			return new ModelAndView("redirect:/formateur/");
+		}
+		
+		@GetMapping("/matiere")
+		public ModelAndView listMatiere(@RequestParam(name = "id", required = true) Long id) {
+			Optional<RessourcesHumaines> formateur = formateurRepository.findById(id);
+	        ArrayList<FormateurMatiere> matiere = formateurmatiereRepository.findByIdWithMatiere(id);
+	        ArrayList<Long> idMatiere = new ArrayList<Long>();
+
+			ModelAndView modelAndView = new ModelAndView("formateur/listMatiere", "formateur", formateur.orElse(null));
+			modelAndView.addObject("matiere", matiere);
+			modelAndView.addObject("idMatiere", idMatiere);
+			return modelAndView;
+		}
+		
+		@GetMapping("/matiere/creation")
+		public ModelAndView addMatiere() {
+			Matiere matiere = matiereRepository.save(new Matiere());
+			return goEditMatiere(matiere);
+		}
+
+		private ModelAndView goEditMatiere(@Valid Matiere matiere) {
+			ModelAndView modelAndView = new ModelAndView("formateur/editMatiere", "formateur", matiere);
+			return modelAndView;
+		}
+
+		@GetMapping("/matiere/save")
+		private ModelAndView saveMatiere(@Valid @ModelAttribute("formateur") Matiere matiere, BindingResult br) {
+			System.out.println("avant"+matiere);
+			if (br.hasErrors()) {
+				System.out.println("pdt"+matiere);
+				return goEditMatiere(matiere);
+			}
+			matiereRepository.save(matiere);
+			System.out.println("apres"+matiere);
 			return new ModelAndView("redirect:/formateur/");
 		}
 		
