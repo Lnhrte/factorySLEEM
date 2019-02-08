@@ -53,6 +53,6 @@
 		</c:forEach>
 	</table>
 
-	<a class="btn btn-info" href="./add">Nouvelle Matiere</a>
+	<a class="btn btn-info" href="./matiere/creation">Nouvelle Matiere</a>
 </body>
 </html>
