@@ -86,7 +86,6 @@ public class FormateurController {
 
 	@GetMapping("/matiere")
 	public ModelAndView listMatiere(@Param("id") Long id) {
-		// Optional<Formateur>matiere = formateurRepository.findByIdWithMatiere(id);
 		ArrayList<FormateurMatiere> formateurmatiere = formateurmatiereRepository.findByIdWithFormateur(id);
 		ArrayList<Long> matieresId = new ArrayList<>();
 
@@ -99,14 +98,6 @@ public class FormateurController {
 			matieres.add(matiereRepository.findById(matiereId).orElse(null));
 		}
 
-		// ArrayList<Matiere> matieres = matiereRepository.findById(id);
-
-		// ArrayList<Long> idMatiere = new ArrayList<Long>();
-
-		// ModelAndView modelAndView = new ModelAndView("formateur/listMatiere",
-		// "matiere", matiere.orElse(null));
-		// modelAndView.addObject("formateurmatiere", formateurmatiere);
-		// modelAndView.addObject("idMatiere", idMatiere);
 		ModelAndView modelAndView = new ModelAndView("formateur/listMatiere", "matieres", matieres);
 		return modelAndView;
 	}
@@ -124,13 +115,10 @@ public class FormateurController {
 
 	@GetMapping("/matiere/save")
 	private ModelAndView saveMatiere(@Valid @ModelAttribute("matiere") Matiere matiere, BindingResult br) {
-		// if (br.hasErrors()) {
-		// return goEditMatiere(matiere);
-		// }
+		if (br.hasErrors()) {
+			return goEditMatiere(matiere);
+		}
 		matiereRepository.save(matiere);
-		// FormateurMatiere formateurMatiere = formateurmatiereRepository.save(new
-		// FormateurMatiere());
-		// formateurMatiere.getMatiere();
 		return new ModelAndView("redirect:/matiere");
 	}
 

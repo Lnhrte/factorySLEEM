@@ -1,10 +1,7 @@
 package sopra.projet.factorySleem.controller;
 
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.TimeUnit;
 
 import javax.validation.Valid;
 
@@ -17,12 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import sopra.projet.factorySleem.model.Formateur;
 import sopra.projet.factorySleem.model.Formation;
 import sopra.projet.factorySleem.model.Matiere;
-import sopra.projet.factorySleem.model.Module;
-import sopra.projet.factorySleem.model.RessourcesHumaines;
-import sopra.projet.factorySleem.repository.FormateurRepository;
 import sopra.projet.factorySleem.repository.FormationRepository;
 import sopra.projet.factorySleem.repository.MatiereRepository;
 import sopra.projet.factorySleem.repository.ModuleRepository;
@@ -39,9 +32,6 @@ public class FormationController {
 
 	@Autowired
 	MatiereRepository matiereRepository;
-
-	// @Autowired
-	// FormateurRepository formateurRepository;
 
 	@RequestMapping("")
 	public ModelAndView home() {
@@ -75,9 +65,7 @@ public class FormationController {
 	private ModelAndView goEdit(@Valid Formation formation) {
 		ModelAndView modelAndView = new ModelAndView("formation/edit", "formation", formation);
 		ArrayList<Matiere> matieres = (ArrayList<Matiere>) matiereRepository.findAll();
-		// List<RessourcesHumaines> formateurs = formateurRepository.findAll();
 		modelAndView.addObject("matieres", matieres);
-		// modelAndView.addObject("formateurs",formateurs );
 		return modelAndView;
 	}
 
@@ -92,29 +80,7 @@ public class FormationController {
 
 	@GetMapping("/planning")
 	public ModelAndView planning() {
-		// Optional<Formation> formation = formationRepository.findById(id);
-		// ArrayList<Module> modules = moduleRepository.findByIdWithFormation(id);
-		// ArrayList<Long> dureesModules = new ArrayList<Long>();
-		// long dureeFormation = getDateDiff(formation.orElse(null).getDateDebut(),
-		// formation.orElse(null).getDateFin(),
-		// TimeUnit.DAYS);
-
-		// for (Module module : modules) {
-		// dureesModules.add(getDateDiff(module.getDateDebut(), module.getDateFin(),
-		// TimeUnit.DAYS));
-		// }
-
-		// ModelAndView modelAndView = new ModelAndView("formation/planning",
-		// "formation", formation.orElse(null));
-		// modelAndView.addObject("modules", modules);
-		// modelAndView.addObject("dureesModules", dureesModules);
-		// modelAndView.addObject("dureeFormation", dureeFormation);
-		// return modelAndView;
 		return new ModelAndView();
 	}
 
-	private long getDateDiff(Date date1, Date date2, TimeUnit timeUnit) {
-		long diffInMillies = date2.getTime() - date1.getTime();
-		return timeUnit.convert(diffInMillies, TimeUnit.MILLISECONDS);
-	}
 }

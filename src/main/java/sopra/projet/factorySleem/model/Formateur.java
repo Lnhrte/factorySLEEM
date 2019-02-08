@@ -22,8 +22,10 @@ public class Formateur extends RessourcesHumaines {
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date indisponibleFin;
-	@OneToMany(mappedBy = "formateur", fetch= FetchType.LAZY)
+	@OneToMany(mappedBy = "formateur", fetch = FetchType.LAZY)
 	private List<FormateurMatiere> matieres;
+	@OneToMany(mappedBy = "formateur", fetch = FetchType.LAZY)
+	private List<Module> modules;
 
 	public Formateur() {
 		super();
@@ -35,7 +37,6 @@ public class Formateur extends RessourcesHumaines {
 		this.indisponibleDebut = indisponibleDebut;
 		this.indisponibleFin = indisponibleFin;
 	}
-
 
 	public String getMotDePasse() {
 		return motDePasse;

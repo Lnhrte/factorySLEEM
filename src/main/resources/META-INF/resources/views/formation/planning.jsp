@@ -52,7 +52,7 @@
 				<a href="../HomeGestionnaire">Accueil</a>
 				<span>Planning</span>
 			</div>
-			<div align="right"><button class="site-btn">Générer un PDF</button></div>
+			<div align="right"><button class="site-btn">Gï¿½nï¿½rer un PDF</button></div>
 			<div class="section-title text-white">
 					<h2>Exemple de Planning </h2><br>
 					

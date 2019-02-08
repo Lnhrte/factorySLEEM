@@ -38,6 +38,9 @@ public class Module {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "formation_id")
 	private Formation formation;
+	@ManyToOne
+	@JoinColumn(name = "formateur_id")
+	private Formateur formateur;
 
 	public Module() {
 		super();
