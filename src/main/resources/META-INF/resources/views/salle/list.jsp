@@ -47,7 +47,7 @@
 	<div class="page-info-section set-bg" style="background-image:url('../img/page-bg/4.jpg');">
 		<div class="container">
 			<div class="site-breadcrumb">
-				<a href="HomeGestionnaire.html">Accueil</a>
+				<a href="../HomeGestionnaire">Accueil</a>
 				<span>Liste des salles</span>
 			</div>
 			<div class="section-title text-white">
@@ -78,8 +78,8 @@
 				<td>${salle.code}</td>
 				<td>${salle.cout}</td>
 				<td>${salle.capacite}</td>
-				<td><a class="btn btn-danger" href="./delete?id=${salle.code}">Supprimer</a></td>
-				<td><a class="btn btn-info" href="./edit?id=${salle.code}">Editer</a></td>
+				<td><a class="btn btn-danger" href="./delete?code=${salle.code}">Supprimer</a></td>
+				<td><a class="btn btn-info" href="./edit?code=${salle.code}">Editer</a></td>
 			</tr>
 		</c:forEach>
 	</table>

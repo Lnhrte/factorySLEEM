@@ -46,7 +46,7 @@
 	<div class="page-info-section set-bg" style="background-image:url('../img/page-bg/4.jpg');">
 		<div class="container">
 			<div class="site-breadcrumb">
-				<a href="HomeGestionnaire.html">Accueil</a>
+				<a href="../HomeGestionnaire">Accueil</a>
 				<span>Liste des formations</span>
 			</div>
 			<div class="section-title text-white">

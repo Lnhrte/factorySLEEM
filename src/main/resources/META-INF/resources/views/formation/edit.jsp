@@ -44,7 +44,7 @@
 	<div class="page-info-section set-bg" style="background-image:url('../img/page-bg/3.jpg');">
 		<div class="container">
 			<div class="site-breadcrumb">
-				<a href="Home.html">Accueil</a>
+				<a href="../HomeGestionnaire">Accueil</a>
 				<span>Gestionnaire /</span>
 				<span>Création formation</span>
 			</div>
@@ -94,8 +94,8 @@
 <%-- 							</c:forEach> --%>
 <!-- 							</select><br><br>				 -->
 				<div>
-					<button class="btn btn-success" type="submit">Enregistrer</button>
-					<a class="btn btn-warning" href="./">Annuler</a>
+					<button class="site-btn" type="submit">Enregistrer</button>
+					<a class="b-btn" href="../HomeGestionnaire">Annuler</a>
 				</div>
 			</form:form>
 			</div>

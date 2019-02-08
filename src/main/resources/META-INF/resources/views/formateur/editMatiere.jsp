@@ -46,8 +46,8 @@
 					<form:input path="niveau" cssClass="form-control" required="true" />
 				</div>
 				<div>
-					<button class="btn btn-success" type="submit">Enregistrer</button>
-					<a class="btn btn-warning" href="./">Annuler</a>
+					<button class="site-btn" type="submit">Enregistrer</button>
+					<a class="b-btn" href="../HomeGestionnaire">Annuler</a>
 				</div>
 			</form:form>
 		</fieldset>

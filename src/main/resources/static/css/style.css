@@ -202,6 +202,32 @@ ol {
 	cursor: pointer;
 	background: #d82a4e;
 }
+.a-btn{
+	display: inline-block;
+	min-width: 196px;
+	text-align: center;
+	border: none;
+	padding: 15px 10px;
+	font-weight: 600;
+	font-size: 16px;
+	position: relative;
+	color: #fff;
+	cursor: pointer;
+	background: #d82a4e;
+}
+.b-btn{
+	display: inline-block;
+	min-width: 196px;
+	text-align: center;
+	border: none;
+	padding: 15px 10px;
+	font-weight: 600;
+	font-size: 16px;
+	position: relative;
+	color: #fff;
+	cursor: pointer;
+	background: #555555;
+}
 
 .site-btn:hover {
 	color: #fff;
@@ -686,6 +712,7 @@ ol {
 
 .signup-form input[type=text],
 .signup-form input[type=email],
+.signup-form input[type=date],
 .signup-form textarea,
 .signup-form select,
 .contact-form input[type=text],

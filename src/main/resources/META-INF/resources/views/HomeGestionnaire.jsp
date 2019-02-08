@@ -1,4 +1,11 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%> 
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 
@@ -18,9 +25,7 @@
 	<link rel="stylesheet" href="css/owl.carousel.css"/>
 	<link rel="stylesheet" href="css/style.css"/>
 </head>
-
 <body>
-
 <!-- Header section -->
 	<header class="header-section">
 		<div class="container">
@@ -41,7 +46,7 @@
 	<div class="page-info-section set-bg" style="background-image:url('img/page-bg/4.jpg');">
 		<div class="container">
 			<div class="site-breadcrumb">
-				<a href="Home.html">Accueil</a>
+				<a href="./HomeGestionnaire">Accueil</a>
 				<span>Gestionnaire</span>
 			</div>
 			<div class="section-title text-white">
@@ -64,8 +69,8 @@
 						<div class="ci-thumb set-bg" style="background-image:url('img/formation.png');"></div>
 						<div class="ci-text">
 							<h5>Formation</h5>
-							<p><a href="creationFormation.html">Ajouter une formation</a><br>
-							<a href="listFormations.html">Accéder aux formations</a></p>
+							<p><a href="./formation/add">Ajouter une formation</a><br>
+							<a href="./formation/">Accéder aux formations</a></p>
 							<span>1</span>
 						</div>
 					</div>
@@ -76,7 +81,7 @@
 						<div class="ci-thumb set-bg" style="background-image:url('img/planning.png');"></div>
 						<div class="ci-text">
 							<h5>Planning</h5>
-							<p><a href="planning.html">Accéder au planning des formations</a></p>
+							<p><a href="./formation/planning">Accéder au planning des formations</a></p>
 							<br>
 							<span>2</span>
 						</div>
@@ -89,9 +94,9 @@
 						<div class="ci-text">
 							<h5>Formateur</h5>
 							<p>
-							<a href="creationFormateur.html">Ajouter un formateur</a><br>
+							<a href="./formateur/creation">Ajouter un formateur</a><br>
 							<a href="rechercheFormateur.html">Rechercher un formateur par compétence</a><br>
-							<a href="listFormateurs.html">Accéder aux formateurs</a>
+							<a href="./formateur/">Accéder aux formateurs</a>
 							</p>
 							
 							<span>3</span>
@@ -117,7 +122,7 @@
 						<div class="ci-thumb set-bg" style="background-image:url('img/matiere.png');"></div>
 						<div class="ci-text">
 							<h5>Matière</h5>
-							<p><a href="listMatieres.html">Accéder à la liste des matières</a></p>
+							<p><a href="./matiere">Accéder à la liste des matières</a></p>
 							<br>
 							<span>5</span>
 						</div>
@@ -130,7 +135,8 @@
 						<div class="ci-thumb set-bg" style="background-image:url('img/salle.png');"></div>
 						<div class="ci-text">
 							<h5>Salle</h5>
-							<p><a href="listSalles.html">Accéder à la liste des salles</a></p>
+							<p><a href="./salle">Accéder à la liste des salles</a>
+							</p>
 							<br>
 							<span>6</span>
 						</div>

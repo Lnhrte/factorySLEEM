@@ -34,11 +34,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 		http.csrf().disable();
 		http.headers().frameOptions().disable();
+		
+		http.authorizeRequests().antMatchers("/css/**", "/img/**").permitAll();
 
 		http.authorizeRequests().antMatchers("/").permitAll();
-		http.authorizeRequests().antMatchers("/matiere/").authenticated().and().formLogin().loginPage("/login")
+		http.authorizeRequests().antMatchers("/**").authenticated().and().formLogin().loginPage("/login")
 				.failureUrl("/login?error=erreur").permitAll().and().logout().permitAll()
 				.logoutSuccessUrl("/");
+		
+		
 		//
 		// http.authorizeRequests().antMatchers("/rest/**").authenticated().and().httpBasic();
 	}
