@@ -45,7 +45,7 @@ public class FormateurController {
 
 	@GetMapping("/")
 	public ModelAndView list() {
-		ModelAndView modelAndView = new ModelAndView("formateur/list", "formateur", formateurRepository.findAll());
+		ModelAndView modelAndView = new ModelAndView("formateur/list", "formateur", formateurRepository.findAllFormateur());
 		return modelAndView;
 	}
 
@@ -90,7 +90,7 @@ public class FormateurController {
 	        ArrayList<FormateurMatiere> matiere = formateurmatiereRepository.findByIdWithMatiere(id);
 	        ArrayList<Long> idMatiere = new ArrayList<Long>();
 
-			ModelAndView modelAndView = new ModelAndView("formateur/listMatiere", "formateur", formateur.orElse(null));
+			ModelAndView modelAndView = new ModelAndView("formateur/listMatiere", "matiere", formateur.orElse(null));
 			modelAndView.addObject("matiere", matiere);
 			modelAndView.addObject("idMatiere", idMatiere);
 			return modelAndView;
@@ -103,12 +103,12 @@ public class FormateurController {
 		}
 
 		private ModelAndView goEditMatiere(@Valid Matiere matiere) {
-			ModelAndView modelAndView = new ModelAndView("formateur/editMatiere", "formateur", matiere);
+			ModelAndView modelAndView = new ModelAndView("formateur/editMatiere", "matiere", matiere);
 			return modelAndView;
 		}
 
 		@GetMapping("/matiere/save")
-		private ModelAndView saveMatiere(@Valid @ModelAttribute("formateur") Matiere matiere, BindingResult br) {
+		private ModelAndView saveMatiere(@Valid @ModelAttribute("matiere") Matiere matiere, BindingResult br) {
 			System.out.println("avant"+matiere);
 			if (br.hasErrors()) {
 				System.out.println("pdt"+matiere);
