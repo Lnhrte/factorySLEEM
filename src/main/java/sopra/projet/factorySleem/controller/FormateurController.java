@@ -44,7 +44,8 @@ public class FormateurController {
 
 	@GetMapping("/")
 	public ModelAndView list() {
-		ModelAndView modelAndView = new ModelAndView("formateur/list", "formateur", formateurRepository.findAllFormateur());
+		ModelAndView modelAndView = new ModelAndView("formateur/list", "formateur",
+				formateurRepository.findAllFormateur());
 		return modelAndView;
 	}
 
@@ -54,67 +55,83 @@ public class FormateurController {
 		return new ModelAndView("redirect:/formateur/");
 	}
 
-	 @GetMapping("/edit")
-		public ModelAndView edit(@RequestParam(name = "id", required = true) Long id) {
-			Optional<RessourcesHumaines> formateur = formateurRepository.findById(id);
-			return goEdit((Formateur)formateur.orElse(null));
-		}
+	@GetMapping("/edit")
+	public ModelAndView edit(@RequestParam(name = "id", required = true) Long id) {
+		Optional<RessourcesHumaines> formateur = formateurRepository.findById(id);
+		return goEdit((Formateur) formateur.orElse(null));
+	}
 
-		@GetMapping("/creation")
-		public ModelAndView add() {
-			Formateur formateur = formateurRepository.save(new Formateur());
+	@GetMapping("/creation")
+	public ModelAndView add() {
+		Formateur formateur = formateurRepository.save(new Formateur());
+		return goEdit(formateur);
+	}
+
+	private ModelAndView goEdit(@Valid Formateur formateur) {
+		ModelAndView modelAndView = new ModelAndView("formateur/form", "formateur", formateur);
+		return modelAndView;
+	}
+
+	@GetMapping("/save")
+	private ModelAndView save(@Valid @ModelAttribute("formateur") Formateur formateur, BindingResult br) {
+		System.out.println("avant" + formateur);
+		if (br.hasErrors()) {
+			System.out.println("pdt" + formateur);
 			return goEdit(formateur);
 		}
+		formateurRepository.save(formateur);
+		System.out.println("apres" + formateur);
+		return new ModelAndView("redirect:/formateur/");
+	}
 
-		private ModelAndView goEdit(@Valid Formateur formateur) {
-			ModelAndView modelAndView = new ModelAndView("formateur/form", "formateur", formateur);
-			return modelAndView;
-		}
+	@GetMapping("/matiere")
+	public ModelAndView listMatiere(@Param("id") Long id) {
+		// Optional<Formateur>matiere = formateurRepository.findByIdWithMatiere(id);
+		ArrayList<FormateurMatiere> formateurmatiere = formateurmatiereRepository.findByIdWithFormateur(id);
+		ArrayList<Long> matieresId = new ArrayList<>();
 
-		@GetMapping("/save")
-		private ModelAndView save(@Valid @ModelAttribute("formateur") Formateur formateur, BindingResult br) {
-			System.out.println("avant"+formateur);
-			if (br.hasErrors()) {
-				System.out.println("pdt"+formateur);
-				return goEdit(formateur);
-			}
-			formateurRepository.save(formateur);
-			System.out.println("apres"+formateur);
-			return new ModelAndView("redirect:/formateur/");
-		}
-		
-		@GetMapping("/matiere")
-		public ModelAndView listMatiere(@Param("id") Long id) {
-			Optional<Formateur>matiere = formateurRepository.findByIdWithMatiere(id);
-	        ArrayList<FormateurMatiere> formateurmatiere = formateurmatiereRepository.findByIdWithMatiere(id);
-	        ArrayList<Long> idMatiere = new ArrayList<Long>();
-
-			ModelAndView modelAndView = new ModelAndView("formateur/listMatiere", "matiere", matiere.orElse(null));
-			modelAndView.addObject("formateurmatiere", formateurmatiere);
-			modelAndView.addObject("idMatiere", idMatiere);
-			return modelAndView;
-		}
-		
-		@GetMapping("/matiere/creation")
-		public ModelAndView addMatiere() {
-			Matiere matiere = matiereRepository.save(new Matiere());
-			return goEditMatiere(matiere);
+		for (FormateurMatiere fm : formateurmatiere) {
+			matieresId.add(fm.getMatiere().getId());
 		}
 
-		private ModelAndView goEditMatiere(@Valid Matiere matiere) {
-			ModelAndView modelAndView = new ModelAndView("formateur/editMatiere", "matiere", matiere);
-			return modelAndView;
+		ArrayList<Matiere> matieres = new ArrayList<>();
+		for (Long matiereId : matieresId) {
+			matieres.add(matiereRepository.findById(matiereId).orElse(null));
 		}
 
-		@GetMapping("/matiere/save")
-		private ModelAndView saveMatiere(@Valid @ModelAttribute("matiere") Matiere matiere, BindingResult br) {
-			if (br.hasErrors()) {
-				return goEditMatiere(matiere);
-			}
-			matiereRepository.save(matiere);
-			FormateurMatiere formateurMatiere=formateurmatiereRepository.save(new FormateurMatiere());
-			formateurMatiere.getMatiere();
-			return new ModelAndView("redirect:/formateur/matiere");
-		}
-		
+		// ArrayList<Matiere> matieres = matiereRepository.findById(id);
+
+		// ArrayList<Long> idMatiere = new ArrayList<Long>();
+
+		// ModelAndView modelAndView = new ModelAndView("formateur/listMatiere",
+		// "matiere", matiere.orElse(null));
+		// modelAndView.addObject("formateurmatiere", formateurmatiere);
+		// modelAndView.addObject("idMatiere", idMatiere);
+		ModelAndView modelAndView = new ModelAndView("formateur/listMatiere", "matieres", matieres);
+		return modelAndView;
+	}
+
+	@GetMapping("/matiere/creation")
+	public ModelAndView addMatiere() {
+		Matiere matiere = matiereRepository.save(new Matiere());
+		return goEditMatiere(matiere);
+	}
+
+	private ModelAndView goEditMatiere(@Valid Matiere matiere) {
+		ModelAndView modelAndView = new ModelAndView("formateur/editMatiere", "matiere", matiere);
+		return modelAndView;
+	}
+
+	@GetMapping("/matiere/save")
+	private ModelAndView saveMatiere(@Valid @ModelAttribute("matiere") Matiere matiere, BindingResult br) {
+		// if (br.hasErrors()) {
+		// return goEditMatiere(matiere);
+		// }
+		matiereRepository.save(matiere);
+		// FormateurMatiere formateurMatiere = formateurmatiereRepository.save(new
+		// FormateurMatiere());
+		// formateurMatiere.getMatiere();
+		return new ModelAndView("redirect:/matiere");
+	}
+
 }

@@ -15,7 +15,7 @@
 		<fieldset>
 			<legend>Edition de la Matiere</legend>
 
-			<form:form action="save" method="get" modelAttribute="matiere">
+			<form:form action="matiere/save" method="get" modelAttribute="matiere">
 				<form:hidden path="version" />
 				<div class="form-group">
 					<form:label path="id">Id</form:label>
