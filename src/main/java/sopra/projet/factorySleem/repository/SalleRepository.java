@@ -11,5 +11,7 @@ import sopra.projet.factorySleem.model.RessourcesMaterielles;
 import sopra.projet.factorySleem.model.Salle;
 
 public interface SalleRepository extends JpaRepository<RessourcesMaterielles, String> {
+	@Query("select distinct s from Salle s")
+    List<Salle>findAllSalle();
 
 }

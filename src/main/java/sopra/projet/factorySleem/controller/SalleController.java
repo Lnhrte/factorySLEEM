@@ -31,7 +31,7 @@ public class SalleController {
 
 	@GetMapping("/")
 	public ModelAndView list() {
-		ModelAndView modelAndView = new ModelAndView("salle/list", "salles", salleRepository.findAll());
+		ModelAndView modelAndView = new ModelAndView("salle/list", "salles", salleRepository.findAllSalle());
 		return modelAndView;
 	}
 
